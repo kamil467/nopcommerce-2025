@@ -75,7 +75,7 @@ public class GoogleAuthenticationController: BasePluginController
             ClientSecret = _googleExternalAuthSettings.SecretKey
         };
 
-        return View("~/Plugins/ExternalAuth.Facebook/Views/Configure.cshtml", model);
+        return View("~/Plugins/ExternalAuth.Google/Views/Configure.cshtml", model);
     }
 
     [HttpPost]
@@ -106,12 +106,12 @@ public class GoogleAuthenticationController: BasePluginController
         var methodIsAvailable = await _authenticationPluginManager
             .IsPluginActiveAsync(GoogleAuthenticationDefaults.SystemName, await _workContext.GetCurrentCustomerAsync(), store.Id);
         if (!methodIsAvailable)
-            throw new NopException("Facebook authentication module cannot be loaded");
+            throw new NopException("Google authentication module cannot be loaded");
 
         if (string.IsNullOrEmpty(_googleExternalAuthSettings.CliendId) ||
             string.IsNullOrEmpty(_googleExternalAuthSettings.SecretKey))
         {
-            throw new NopException("Facebook authentication module not configured");
+            throw new NopException("Google authentication module not configured");
         }
 
         //configure login callback action
@@ -140,6 +140,7 @@ public class GoogleAuthenticationController: BasePluginController
             ExternalIdentifier = authenticateResult.Principal.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value,
             ExternalDisplayIdentifier = authenticateResult.Principal.FindFirst(claim => claim.Type == ClaimTypes.Name)?.Value,
             Claims = authenticateResult.Principal.Claims.Select(claim => new ExternalAuthenticationClaim(claim.Type, claim.Value)).ToList()
+            
         };
 
         //authenticate Nop user
@@ -150,9 +151,9 @@ public class GoogleAuthenticationController: BasePluginController
     {
         var externalAuthenticationRecord = await _externalAuthenticationService.GetExternalAuthenticationRecordByIdAsync(earId);
         if (externalAuthenticationRecord is not null)
-            _notificationService.WarningNotification(await _localizationService.GetResourceAsync("Plugins.ExternalAuth.Facebook.AuthenticationDataExist"));
+            _notificationService.WarningNotification(await _localizationService.GetResourceAsync("Plugins.ExternalAuth.Google.AuthenticationDataExist"));
         else
-            _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Plugins.ExternalAuth.Facebook.AuthenticationDataDeletedSuccessfully"));
+            _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Plugins.ExternalAuth.Google.AuthenticationDataDeletedSuccessfully"));
 
         return RedirectToRoute("CustomerInfo");
     }

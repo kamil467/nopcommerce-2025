@@ -8,13 +8,40 @@
         <PackageProjectUrl>PACKAGE_PROJECT_URL</PackageProjectUrl>
         <RepositoryUrl>REPOSITORY_URL</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
-        <OutputPath>$(SolutionDir)\Presentation\Nop.Web\Plugins\PLUGIN_OUTPUT_DIRECTORY</OutputPath>
+        <OutputPath>$(SolutionDir)\Presentation\Nop.Web\Plugins\ExternalAuth.Google</OutputPath>
         <OutDir>$(OutputPath)</OutDir>
         <!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your    project. You need to set this parameter to true if your plugin has a nuget package to ensure that   the dlls copied from the NuGet cache to the output of your project-->
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
+      <ItemGroup>
+    <None Remove="Content\googlestyles.css" />
+    <None Remove="Content\Images\google_logo.png" />
+     <None Remove="logo.jpeg" />
+    <None Remove="plugin.json" />
+    <None Remove="Views\Configure.cshtml" />
+    <None Remove="Views\PublicInfo.cshtml" />
+    <None Remove="Views\_ViewImports.cshtml" />
+  </ItemGroup>
     <ItemGroup>
+      <Content Include="Content\googlestyles.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\google_logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="plugin.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Configure.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\PublicInfo.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
         <ProjectReference Include="$(SolutionDir)\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
         <ClearPluginAssemblies Include="$(SolutionDir)\Build\ClearPluginAssemblies.proj" />
     </ItemGroup>
