@@ -3,7 +3,7 @@
 @inject Nop.Core.IWebHelper webHelper
 
 @{
-    Layout = "_ConfigurePlugin";
+    Layout = "_ConfigurePlugin";   @* The layout for configuration page is should always _ConfigurePlugin. This layout defined in Nop Core modules*@
 }
 
 <form asp-controller="GoogleAuthentication" asp-action="Configure" method="post">
