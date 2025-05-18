@@ -46,6 +46,6 @@ public partial class Program
         await app.StartEngineAsync();
 
         await app.RunAsync();
-        await app.RunAsync();
+      //  await app.RunAsync();
     }
 }

@@ -16,10 +16,10 @@ public class RouteProvider : IRouteProvider
     /// <param name="endpointRouteBuilder">Route builder</param>
     public void RegisterRoutes(IEndpointRouteBuilder endpointRouteBuilder)
     {
-        endpointRouteBuilder.MapControllerRoute(GoogleAuthenticationDefaults.DataDeletionCallbackRoute, $"facebook/data-deletion-callback/",
+        endpointRouteBuilder.MapControllerRoute(GoogleAuthenticationDefaults.DataDeletionCallbackRoute, $"google/data-deletion-callback/",
             new { controller = "GoogleDataDeletion", action = "DataDeletionCallback" });
 
-        endpointRouteBuilder.MapControllerRoute(GoogleAuthenticationDefaults.DataDeletionStatusCheckRoute, $"facebook/data-deletion-status-check/{{earId:min(0)}}",
+        endpointRouteBuilder.MapControllerRoute(GoogleAuthenticationDefaults.DataDeletionStatusCheckRoute, $"google/data-deletion-status-check/{{earId:min(0)}}",
             new { controller = "GoogleAuthentication", action = "DataDeletionStatusCheck" });
     }
 
