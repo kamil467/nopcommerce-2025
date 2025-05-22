@@ -1,0 +1,22 @@
+.firebase-login-block {
+    display: inline-block;
+    margin: 0 5px 5px 0;
+}
+
+#firebaseui-auth-container {
+    min-width: 220px;
+}
+
+/* Override some FirebaseUI styles to match nopCommerce theme */
+.mdl-button--raised.mdl-button--colored {
+    background: #4ab2f1 !important;
+}
+
+.mdl-button--primary.mdl-button--primary {
+    color: #4ab2f1 !important;
+}
+
+.firebaseui-container {
+    max-width: none !important;
+    width: 100%;
+}
